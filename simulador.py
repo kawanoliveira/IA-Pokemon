@@ -49,6 +49,7 @@ def trocar_pokemon(player):
     player[0] = temp
 
 def realizar_ataque(player1, player2, i):
+    if player1[0].name == "morto": return
     print(player1[0].name, " usou ", player1[0].moves[i].name)
     player2[0].hp -= dano.calcular_dano(player1[0], player2[0], player1[0].moves[i])
     if player2[0].hp <= 0:
@@ -64,7 +65,9 @@ def simular_batalha():
 
     while not batalha_fim:
         print(player1[0], "\n",player2[0])
-        escolha = input("\nOque deseja fazer?\n [1] - Atacar\n [2] - Trocar pokemon\n:")
+        escolha = input("\nOque o player1 deseja fazer?\n [1] - Atacar\n [2] - Trocar pokemon\n:")
+        player1_prioridade = False
+        player2_prioridade = False
         match escolha:
             case "1":
                 print("\n\nAtacar:")
@@ -73,8 +76,30 @@ def simular_batalha():
                     print(f"   [{i}]", moves.name)
                     i += 1
                 ataque = input("\n:")
-                realizar_ataque(player1, player2, int(ataque) - 1)
+                acao_1 = lambda: realizar_ataque(player1, player2, int(ataque) - 1)
             case "2":
-                trocar_pokemon(player1)
+                acao_1 = lambda: trocar_pokemon(player1)
+                player1_prioridade = True
+
+        escolha = input("\nOque o player 2 deseja fazer?\n [1] - Atacar\n [2] - Trocar pokemon\n:")
+        match escolha:
+            case "1":
+                print("\n\nAtacar:")
+                i = 1
+                for moves in player2[0].moves:
+                    print(f"   [{i}]", moves.name)
+                    i += 1
+                ataque = input("\n:")
+                acao_2 = lambda: realizar_ataque(player2, player1, int(ataque) - 1)
+            case "2":
+                acao_2 = lambda: trocar_pokemon(player2)
+                player2_prioridade = True
+
+        if (player2[0].speed > player1[0].speed and not player1_prioridade) or player2_prioridade:
+            acao_2()
+            acao_1()
+        else:
+            acao_1()
+            acao_2()
 
 simular_batalha()
