@@ -9,7 +9,7 @@ Barrage;Normal;p;15;85;20;Hits 2-5 times in one turn.
 Barrier;Psychic;e;—;—;20;Sharply raises user's Defense.
 Bide;Normal;p;—;—;10;User takes damage for two turns then strikes back double.
 Bind;Normal;p;15;85;20;Traps opponent, damaging them for 4-5 turns.
-Bite;Dark;p;60;100;25;May cause flinching.
+Bite;Normal;p;60;100;25;May cause flinching.
 Blizzard;Ice;s;110;70;5;May freeze opponent.
 Body Slam;Normal;p;85;100;15;May paralyze opponent.
 Bone Club;Ground;p;65;85;20;May cause flinching.

@@ -1,5 +1,5 @@
 class Pokemon:
-    def __init__(self,id, nome, tipo1, tipo2, att_total, hp, atk, defs, sp_atk, sp_defs, speed, nivel = 50, moves = None):
+    def __init__(self,id, name, tipo1, tipo2, att_total, hp, atk, defs, sp_atk, sp_defs, speed, nivel = 50, moves = None):
         """
         Inicializa um Pokémon com atributos mais detalhados.
         :param id: id do Pokémon correspondente a pokedex.
@@ -15,7 +15,7 @@ class Pokemon:
         :param speed: Velocidade do Pokémon.
         """
         self.id = id
-        self.nome = nome
+        self.name = name
         self.tipo1 = tipo1
         self.tipo2 = tipo2
         self.att_total = att_total
@@ -32,7 +32,7 @@ class Pokemon:
         """
         Retorna uma string representando as informações do Pokémon.
         """
-        return (f"{self.nome} (Tipo: {self.tipo1}/{self.tipo2 if self.tipo2 else 'Nenhum'}, "
+        return (f"{self.name} (Tipo: {self.tipo1}/{self.tipo2 if self.tipo2 else 'Nenhum'}, "
                 f"HP: {self.hp}, Ataque: {self.atk}, Defesa: {self.defs}, "
                 f"Sp. Ataque: {self.sp_atk}, Sp. Defesa: {self.sp_defs}, Velocidade: {self.speed})")
 
@@ -63,3 +63,7 @@ class Attack:
         """
         return (f"Ataque: {self.name} (Tipo: {self.attack_type}, Categoria: {self.category}, "
                 f"Poder: {self.power}, Precisão: {self.accuracy}%, PP: {self.pp}, Efeito: {self.effect})")
+
+class Morto:
+    def __init__(self):
+        self.name = "morto"
