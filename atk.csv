@@ -7,7 +7,7 @@ Amnesia;Psychic;e;—;—;20;Sharply raises user's Special Defense.
 Aurora Beam;Ice;s;65;100;20;May lower opponent's Attack.
 Barrage;Normal;p;15;85;20;Hits 2-5 times in one turn.
 Barrier;Psychic;e;—;—;20;Sharply raises user's Defense.
-Bide;Normal;p;—;—;10;User takes damage for two turns then strikes back double.
+Bide;Normal;e;—;—;10;User takes damage for two turns then strikes back double.
 Bind;Normal;p;15;85;20;Traps opponent, damaging them for 4-5 turns.
 Bite;Normal;p;60;100;25;May cause flinching.
 Blizzard;Ice;s;110;70;5;May freeze opponent.
@@ -22,7 +22,7 @@ Confuse Ray;Ghost;e;—;100;10;Confuses opponent.
 Confusion;Psychic;s;50;100;25;May confuse opponent.
 Constrict;Normal;p;10;100;35;May lower opponent's Speed by one stage.
 Conversion;Normal;e;—;—;30;Changes user's type to that of its first move.
-Counter;Fighting;p;—;100;20;When hit by a Physical Attack, user strikes back with 2x power.
+Counter;Fighting;e;—;100;20;When hit by a Physical Attack, user strikes back with 2x power.
 Crabhammer;Water;p;100;90;10;High critical hit ratio.
 Cut;Normal;p;50;95;30;—
 Defense Curl;Normal;e;—;—;40;Raises user's Defense.
@@ -33,7 +33,7 @@ Double Kick;Fighting;p;30;100;30;Hits twice in one turn.
 Double Slap;Normal;p;15;85;10;Hits 2-5 times in one turn.
 Double Team;Normal;e;—;—;15;Raises user's Evasiveness.
 Double-Edge;Normal;p;120;100;15;User receives recoil damage.
-Dragon Rage;Dragon;s;—;100;10;Always inflicts 40 HP.
+Dragon Rage;Dragon;e;—;100;10;Always inflicts 40 HP.
 Dream Eater;Psychic;s;100;100;15;User recovers half the HP inflicted on a sleeping opponent.
 Drill Peck;Flying;p;80;100;20;—
 Earthquake;Ground;p;100;100;10;Power is doubled if opponent is underground from using Dig.
@@ -43,7 +43,7 @@ Explosion;Normal;p;250;100;5;User faints.
 Fire Blast;Fire;s;110;85;5;May burn opponent.
 Fire Punch;Fire;p;75;100;15;May burn opponent.
 Fire Spin;Fire;s;35;85;15;Traps opponent, damaging them for 4-5 turns.
-Fissure;Ground;p;—;30;5;One-Hit-KO, if it hits.
+Fissure;Ground;e;—;30;5;One-Hit-KO, if it hits.
 Flamethrower;Fire;s;90;100;15;May burn opponent.
 Flash;Normal;e;—;100;20;Lowers opponent's Accuracy.
 Fly;Flying;p;90;95;15;Flies up on first turn, attacks on second turn.
@@ -53,14 +53,14 @@ Fury Swipes;Normal;p;18;80;15;Hits 2-5 times in one turn.
 Glare;Normal;e;—;100;30;Paralyzes opponent.
 Growl;Normal;e;—;100;40;Lowers opponent's Attack.
 Growth;Normal;e;—;—;20;Raises user's Attack and Special Attack.
-Guillotine;Normal;p;—;30;5;One-Hit-KO, if it hits.
+Guillotine;Normal;e;—;30;5;One-Hit-KO, if it hits.
 Gust;Flying;s;40;100;35;Hits Pokémon using Fly/Bounce/Sky Drop with double power.
 Harden;Normal;e;—;—;30;Raises user's Defense.
 Haze;Ice;e;—;—;30;Resets all stat changes.
 Headbutt;Normal;p;70;100;15;May cause flinching.
 High Jump Kick;Fighting;p;130;90;10;If it misses, the user loses half their HP.
 Horn Attack;Normal;p;65;100;25;—
-Horn Drill;Normal;p;—;30;5;One-Hit-KO, if it hits.
+Horn Drill;Normal;e;—;30;5;One-Hit-KO, if it hits.
 Hydro Pump;Water;s;110;80;5;—
 Hyper Beam;Normal;s;150;90;5;User must recharge next turn.
 Hyper Fang;Normal;p;80;90;15;May cause flinching.
@@ -76,7 +76,7 @@ Leer;Normal;e;—;100;30;Lowers opponent's Defense.
 Lick;Ghost;p;30;100;30;May paralyze opponent.
 Light Screen;Psychic;e;—;—;30;Halves damage from Special attacks for 5 turns.
 Lovely Kiss;Normal;e;—;75;10;Puts opponent to sleep.
-Low Kick;Fighting;p;—;100;20;The heavier the opponent, the stronger the attack.
+Low Kick;Fighting;e;—;100;20;The heavier the opponent, the stronger the attack.
 Meditate;Psychic;e;—;—;40;Raises user's Attack.
 Mega Drain;Grass;s;40;100;15;User recovers half the HP inflicted on opponent.
 Mega Kick;Normal;p;120;75;5;—
@@ -86,7 +86,7 @@ Mimic;Normal;e;—;—;10;Copies the opponent's last move.
 Minimize;Normal;e;—;—;10;Sharply raises user's Evasiveness.
 Mirror Move;Flying;e;—;—;20;User performs the opponent's last move.
 Mist;Ice;e;—;—;30;User's stats cannot be changed for a period of time.
-Night Shade;Ghost;s;—;100;15;Inflicts damage equal to user's level.
+Night Shade;Ghost;s;50;100;15;Inflicts damage equal to user's level.
 Pay Day;Normal;p;40;100;20;Money is earned after the battle.
 Peck;Flying;p;35;100;35;—
 Petal Dance;Grass;s;120;100;10;User attacks for 2-3 turns but then becomes confused.
@@ -97,7 +97,7 @@ Poison Sting;Poison;p;15;100;35;May poison the opponent.
 Pound;Normal;p;40;100;35;—
 Psybeam;Psychic;s;65;100;20;May confuse opponent.
 Psychic;Psychic;s;90;100;10;May lower opponent's Special Defense.
-Psywave;Psychic;s;—;100;15;Inflicts damage 50-150% of user's level.
+Psywave;Psychic;e;—;100;15;Inflicts damage 50-150% of user's level.
 Quick Attack;Normal;p;40;100;30;User attacks first.
 Rage;Normal;p;20;100;20;Raises user's Attack when hit.
 Razor Leaf;Grass;p;55;95;25;High critical hit ratio.
@@ -112,7 +112,7 @@ Rolling Kick;Fighting;p;60;85;15;May cause flinching.
 Sand Attack;Ground;e;—;100;15;Lowers opponent's Accuracy.
 Scratch;Normal;p;40;100;35;—
 Screech;Normal;e;—;85;40;Sharply lowers opponent's Defense.
-Seismic Toss;Fighting;p;—;100;20;Inflicts damage equal to user's level.
+Seismic Toss;Fighting;e;—;100;20;Inflicts damage equal to user's level.
 Self-Destruct;Normal;p;200;100;5;User faints.
 Sharpen;Normal;e;—;—;30;Raises user's Attack.
 Sing;Normal;e;—;55;15;Puts opponent to sleep.
@@ -126,7 +126,7 @@ Smog;Poison;s;30;70;20;May poison opponent.
 Smokescreen;Normal;e;—;100;20;Lowers opponent's Accuracy.
 Soft-Boiled;Normal;e;—;—;5;User recovers half its max HP.
 Solar Beam;Grass;s;120;100;10;Charges on first turn, attacks on second.
-Sonic Boom;Normal;s;—;90;20;Always inflicts 20 HP.
+Sonic Boom;Normal;e;—;90;20;Always inflicts 20 HP.
 Spike Cannon;Normal;p;20;100;15;Hits 2-5 times in one turn.
 Splash;Normal;e;—;—;40;Doesn't do ANYTHING.
 Spore;Grass;e;—;100;15;Puts opponent to sleep.
@@ -137,7 +137,7 @@ Struggle;Normal;p;50;—;—;Only usable when all PP are gone. Hurts the user.
 Stun Spore;Grass;e;—;75;30;Paralyzes opponent.
 Submission;Fighting;p;80;80;20;User receives recoil damage.
 Substitute;Normal;e;—;—;10;Uses HP to creates a decoy that takes hits.
-Super Fang;Normal;p;—;90;10;Always takes off half of the opponent's HP.
+Super Fang;Normal;e;—;90;10;Always takes off half of the opponent's HP.
 Supersonic;Normal;e;—;55;20;Confuses opponent.
 Surf;Water;s;90;100;15;Hits all adjacent Pokémon.
 Swift;Normal;s;60;∞;20;Ignores Accuracy and Evasiveness.
@@ -162,5 +162,5 @@ Water Gun;Water;s;40;100;25;—
 Waterfall;Water;p;80;100;15;May cause flinching.
 Whirlwind;Normal;e;—;—;20;In battles, the opponent switches. In the wild, the Pokémon runs.
 Wing Attack;Flying;p;60;100;35;—
-Withdraw;Water;p;—;—;40;Raises user's Defense.
+Withdraw;Water;e;—;—;40;Raises user's Defense.
 Wrap;Normal;p;15;90;20;Traps opponent, damaging them for 4-5 turns.

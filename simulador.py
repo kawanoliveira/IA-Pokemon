@@ -55,7 +55,7 @@ def realizar_ataque(player1, player2, i):
     if player2[0].hp <= 0:
         print(player2[0].name, "morreu, voce precisa substituilo")
         player2[0] = cs.Morto()
-        trocar_pokemon(player2)
+        return player2
 
 
 def simular_batalha():
@@ -75,8 +75,8 @@ def simular_batalha():
                 for moves in player1[0].moves:
                     print(f"   [{i}]", moves.name)
                     i += 1
-                ataque = input("\n:")
-                acao_1 = lambda: realizar_ataque(player1, player2, int(ataque) - 1)
+                ataque1 = input("\n:")
+                acao_1 = lambda: realizar_ataque(player1, player2, int(ataque1) - 1)
             case "2":
                 acao_1 = lambda: trocar_pokemon(player1)
                 player1_prioridade = True
@@ -94,12 +94,22 @@ def simular_batalha():
             case "2":
                 acao_2 = lambda: trocar_pokemon(player2)
                 player2_prioridade = True
+            
 
+        pkm_morto = None
         if (player2[0].speed > player1[0].speed and not player1_prioridade) or player2_prioridade:
-            acao_2()
-            acao_1()
+            n = acao_2()
+            if n != None: pkm_morto = n
+            n = acao_1()
+            if n != None: pkm_morto = n
+            if pkm_morto != None:
+                trocar_pokemon(pkm_morto)
         else:
-            acao_1()
-            acao_2()
+            n = acao_1()
+            if n != None: pkm_morto = n
+            n = acao_2()
+            if n != None: pkm_morto = n
+            if pkm_morto != None:
+                trocar_pokemon(pkm_morto)
 
 simular_batalha()

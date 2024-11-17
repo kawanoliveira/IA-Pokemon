@@ -67,3 +67,12 @@ class Attack:
 class Morto:
     def __init__(self):
         self.name = "morto"
+
+class Node:
+    def __init__(self, pai, profundidade, valor, a):
+        self.pai = pai
+        self.profundidade = profundidade
+        self.visitado = False
+        self.filhos = []
+        self.valor = valor
+        self.a = a
