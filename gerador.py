@@ -129,7 +129,7 @@ def salvar_arvore_json(root, filename):
 
 player1, player2 = sm.carregar_time()
 gerar_nos(player1, player2, arvore_inicio, True)
-salvar_arvore_json(arvore_inicio, 'arvore.json')
+#salvar_arvore_json(arvore_inicio, 'arvore.json')
 
 
 print("Total de nos: ",numero_nos)

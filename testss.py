@@ -99,8 +99,3 @@ def copiar_primeiras_linhas_json(input_filename, output_filename, max_linhas=100
 
     except Exception as e:
         print(f"Ocorreu um erro: {e}")
-
-# Exemplo de uso:
-# Suponha que o arquivo grande seja 'arvore_grande.json'
-# E você deseja salvar as primeiras 1000 linhas em 'primeiras_1000.json'
-copiar_primeiras_linhas_json('arvore.json', 'primeiras_1000.json')

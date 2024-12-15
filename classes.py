@@ -124,3 +124,30 @@ class Node:
         self.dano = dano
         self.pkm1 = pkm1
         self.pkm2 = pkm2
+
+class Node_final:
+    """
+    Classe que representa um nó final na árvore de decisão.
+    """
+    def __init__(self, pai, dado, acao, escolha):
+        """
+        Inicializa um nó final da árvore de decisão.
+        :param pai: Nó pai (anterior na árvore).
+        :param acao: Ação associada ao nó.
+        :param escolha: Escolha associada ao nó.
+        :param dado: Dano ou resultado da ação.
+        :param profundidade: Profundidade do nó na árvore.
+        """
+        self.pai = pai
+        self.profundidade = pai.profundidade+1
+        self.visitado = False
+        self.dado = dado
+        self.acao = acao
+        self.escolha = escolha
+        self.filhos = []
+
+class Candidato:
+    def __init__(self, valor, no, hps):
+        self.valor = valor
+        self.no = no
+        self.hps = hps
