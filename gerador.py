@@ -1,55 +1,94 @@
 import classes as cs
-from graphviz import Digraph
-import testss
+import simulador as sm
 
-acoes = [1, 1, 1, 1, 2, 2, 2, 2, 2, 2]
-escolhas = [1, 2, 3, 4, 1, 2, 3, 4, 5, 6]
+acoes = ["1", "1", "1", "1", "2"]
+escolhas = ["1", "2", "3", "4", "2"]
 
-arvore_inicio = cs.Node(None, 0, "-", 1)
+acoes2 = ["2", "2"]
+escolhas2 = ["2", "3"]
+
+arvore_inicio = cs.Node(None, 0, 0, 0, profundidade= 0)
 numero_nos = 1
+nos_finais = 0
+nos_nao_finais = 0
 
-for i in range(len(acoes)):
-    arvore_inicio.filhos.append(cs.Node(arvore_inicio, arvore_inicio.profundidade + 1, (str(acoes[i]) + " - " + str(escolhas[i])), acoes[i]))
-    numero_nos +=1
-    filho = arvore_inicio.filhos[i]
-    testss.checar_memoria()
-    for j in range(len(acoes)):
-        if filho.a == 2: continue
-        filho.filhos.append(cs.Node(arvore_inicio, filho.profundidade + 1, (str(acoes[j]) + " - " + str(escolhas[j])), acoes[j]))
+player1, player2 = sm.carregar_time()
+
+def gerar_nos(player1, player2, no_atual, player_verdadeiro, morto = False):
+    global nos_finais
+    global nos_nao_finais
+    global numero_nos
+    if no_atual.profundidade < 8:
+        if player1[0].speed > player2[0].speed or player_verdadeiro == False:
+            for i in range(len(acoes)):
+                if morto:
+                    no_atual.filhos.append(cs.Node(no_atual, "0", "0", 0, player1[0].name, player2[0].name))
+                    gerar_nos(player2, player1, no_atual.filhos[i], not player_verdadeiro)
+                    break
+                player1_novo, player2_novo, dano = sm.simular_batalha2(player1, player2, acoes[i], escolhas[i])
+                if dano == "sem pokemons":
+                    nos_finais += 1
+                    no_atual.filhos.append(("fim da batalha", acoes[i], escolhas[i]))
+                    continue
+                no_atual.filhos.append(cs.Node(no_atual, acoes[i], escolhas[i], dano, player1[0].name, player2[0].name))
+                if dano == "matou" and player_verdadeiro:
+                    gerar_nos(player2_novo, player1_novo, no_atual.filhos[i], not player_verdadeiro, morto=True)
+                    numero_nos += 1
+                    print(numero_nos, end='\r')
+                    continue
+                gerar_nos(player2_novo, player1_novo, no_atual.filhos[i], not player_verdadeiro)
+                numero_nos += 1
+                print(numero_nos, end='\r')
+        else:
+            for i in range(len(acoes2)):
+                player1_novo, player2_novo, dano = sm.simular_batalha2(player1, player2, acoes2[i], escolhas2[i])
+                if dano == "sem pokemons": return 0
+                no_atual.filhos.append(cs.Node(no_atual, acoes[i], escolhas[i], dano, player1_novo[0].name, player2_novo[0].name))
+                gerar_nos(player2_novo, player1_novo, no_atual.filhos[i], not player_verdadeiro)
+                numero_nos += 1
+                print(numero_nos, end='\r')
+    else:
         numero_nos += 1
-        filho2 = filho.filhos[j]
-        testss.checar_memoria()
-        for k in range(len(acoes)):
-            if filho2.a == 2: continue
-            filho2.filhos.append(cs.Node(arvore_inicio, filho2.profundidade + 1, (str(acoes[k]) + " - " + str(escolhas[k])), acoes[k]))
-            numero_nos += 1
-            filho3 = filho2.filhos[k]
-            testss.checar_memoria()
-            for p in range(len(acoes)):
-                if filho3.a == 2: continue
-                filho3.filhos.append(cs.Node(arvore_inicio, filho3.profundidade + 1, (str(acoes[p]) + " - " + str(escolhas[p])), acoes[p]))
-                numero_nos +=1
-                testss.checar_memoria()
-
-def desenhar_arvore(raiz):
-    grafo = Digraph()
-    grafo.render("arvore", format="pdf")  # Gera e visualiza um SVG
-    grafo.attr(rankdir='TB')  # Direção da árvore: Topo para Baixo
+        nos_nao_finais += 1
+        return 0
     
-    def adicionar_nodos(no):
-        if no is not None:
-            grafo.node(str(id(no)), f"Valor: {no.valor}\nProfundidade: {no.profundidade}")
-            for filho in no.filhos:
-                grafo.edge(str(id(no)), str(id(filho)))  # Conecta pai ao filho
-                adicionar_nodos(filho)
+import json
 
-    testss.checar_memoria()
-    adicionar_nodos(raiz)
-    testss.checar_memoria()
-    grafo.render("arvore", view=True)  # Salva e abre o arquivo gerado
-    testss.checar_memoria()
+def arvore_para_dict(no):
+    if isinstance(no, tuple) and len(no) == 3:
+        return {
+            "status": no[0],
+            "acao": no[1],
+            "escolha": no[2]
+        }
+    return {
+        "profundidade": no.profundidade,
+        "visitado": no.visitado,
+        "acao": no.acao,
+        "escolha": no.escolha,
+        "dano": no.dano,
+        "pkm1": no.pkm1,
+        "pkm2": no.pkm2,
+        "filhos": [arvore_para_dict(filho) for filho in no.filhos]  # Recursão nos filhos
+    }
 
-desenhar_arvore(arvore_inicio)
-testss.checar_memoria()
-input("k")
-print(numero_nos)
+def salvar_arvore_json(root, filename):
+    with open(filename, 'w', encoding='utf-8') as file:
+        json.dump(arvore_para_dict(root), file, ensure_ascii=False, indent=4)
+
+
+gerar_nos(player1, player2, arvore_inicio, True)
+salvar_arvore_json(arvore_inicio, 'arvore.json')
+print("Total de nos: ",numero_nos)
+print("Nos limitados pela profundidade: ",nos_nao_finais)
+print("Nos de batalhas finalizadas: ",nos_finais)
+
+
+#for i in player1:
+#    print(i)
+#    for k in i.moves:
+#        print(k)
+#for i in player2:
+#    print(i)
+#    for k in i.moves:
+#        print(k)

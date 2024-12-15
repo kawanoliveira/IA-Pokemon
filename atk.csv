@@ -164,3 +164,6 @@ Whirlwind;Normal;e;—;—;20;In battles, the opponent switches. In the wild, th
 Wing Attack;Flying;p;60;100;35;—
 Withdraw;Water;e;—;—;40;Raises user's Defense.
 Wrap;Normal;p;15;90;20;Traps opponent, damaging them for 4-5 turns.
+Sludge Bomb;Poison;s;90;100;20;May poison opponent.
+Facade;Normal;p;70;100;15;May cause flinching.
+Aerial Ace;Flying;p;60;100;35;—

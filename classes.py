@@ -1,3 +1,8 @@
+import os
+import classes as cs
+import pandas as pd
+
+relative_path = os.path.join(os.path.dirname(__file__))
 class Pokemon:
     def __init__(self,id, name, tipo1, tipo2, att_total, hp, atk, defs, sp_atk, sp_defs, speed, nivel = 50, moves = None):
         """
@@ -27,6 +32,8 @@ class Pokemon:
         self.speed = ((((speed + 15)*2)*nivel)/100)+5
         self.nivel = nivel
         self.moves = moves
+        for i in range(len(moves)):
+            self.moves[i] = cs.Attack(*(pd.read_csv((relative_path + "\\atk.csv"), sep=';', skiprows=lambda x: x != moves[i] - 1, nrows=1, header=None)).values[0])
 
     def __str__(self):
         """
@@ -69,10 +76,14 @@ class Morto:
         self.name = "morto"
 
 class Node:
-    def __init__(self, pai, profundidade, valor, a):
+    def __init__(self, pai, acao, escolha, dano, pkm1 = None, pkm2 = None, profundidade = None):
         self.pai = pai
         self.profundidade = profundidade
+        if profundidade == None: self.profundidade = pai.profundidade + 1
         self.visitado = False
         self.filhos = []
-        self.valor = valor
-        self.a = a
+        self.acao = acao
+        self.escolha = escolha
+        self.dano = dano
+        self.pkm1 = pkm1
+        self.pkm2 = pkm2
